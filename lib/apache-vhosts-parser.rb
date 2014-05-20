@@ -50,7 +50,9 @@ module ApacheVhostsParser
 		}
 
 		str.split(/\n+/).map(&:strip).each do |line|
-			if m = line.match(/<\s*(\w+)(.*?)>$/)
+			if line =~ /^$/
+				#ignore the line
+			elsif m = line.match(/<\s*(\w+)(.*?)>$/)
 				opener, rest = m[1], m[2].to_s.strip.split(/\s+/)
 				new_tag = {
 					name: opener.downcase,
