@@ -26,6 +26,8 @@ module ApacheVhostsParser
 							vhost[:server_name] = nested[:arguments].first
 						when 'documentroot'
 							vhost[:document_root] = nested[:arguments].first
+						when 'serveralias'
+							vhost[:server_alias] = nested[:arguments].join( ' ' )
 						end
 					end
 				end
